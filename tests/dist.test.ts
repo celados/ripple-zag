@@ -92,4 +92,13 @@ describe("dist build", () => {
     const merged = mergeProps({ a: 1 }, { b: 2 })
     expect(merged).toMatchObject({ a: 1, b: 2 })
   })
+
+  test("mergeProps composes data-ownedby tokens", () => {
+    const merged = mergeProps(
+      { "data-ownedby": "dialog-1 shared" },
+      { "data-ownedby": "popover-1 shared" },
+    )
+
+    expect(merged).toHaveProperty("data-ownedby", "dialog-1 shared popover-1")
+  })
 })

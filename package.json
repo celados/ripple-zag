@@ -1,6 +1,6 @@
 {
-  "name": "ripple-zag",
-  "version": "0.2.0",
+  "name": "@celados/ripple-zag",
+  "version": "0.3.0",
   "description": "Zag JS adapter for RippleJS",
   "keywords": [
     "js",
@@ -16,7 +16,7 @@
   "contributors": [
     "ethan-huo"
   ],
-  "homepage": "https://github.com/ethan-huo/ripple-zag#readme",
+  "homepage": "https://github.com/celados/ripple-zag#readme",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -33,27 +33,33 @@
     },
     "./package.json": "./package.json"
   },
-  "repository": "https://github.com/ethan-huo/ripple-zag",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/celados/ripple-zag.git"
+  },
   "sideEffects": false,
   "bugs": {
-    "url": "https://github.com/ethan-huo/ripple-zag/issues"
+    "url": "https://github.com/celados/ripple-zag/issues"
   },
   "scripts": {
     "build": "tsup",
     "test": "bun run build && NODE_OPTIONS='--conditions=browser' vitest",
-    "lint": "eslint src",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "bun run build && tsc --noEmit"
+  },
+  "publishConfig": {
+    "registry": "https://npm.celados.com",
+    "access": "public"
   },
   "dependencies": {
-    "@zag-js/core": "^1.41.1",
-    "@zag-js/types": "^1.41.1",
-    "@zag-js/utils": "^1.41.1"
+    "@zag-js/core": "^1.43.0",
+    "@zag-js/types": "^1.43.0",
+    "@zag-js/utils": "^1.43.0"
   },
   "peerDependencies": {
-    "ripple": ">=0.3.0"
+    "ripple": "^0.3.118"
   },
   "devDependencies": {
-    "@ripple-ts/vite-plugin": "^0.3.84",
+    "@ripple-ts/vite-plugin": "^0.3.118",
     "@types/node": "^24.10.2",
     "jsdom": "^28.1.0",
     "tsup": "^8.4.0",

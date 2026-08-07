@@ -23,17 +23,9 @@ bun run typecheck  # tsc --noEmit
 
 ## Release Model
 
-Not published to npm. Releases are GitHub snapshot tags. `.github/workflows/release.yml`
-reads `package.json#version`, tests, builds, then creates an annotated `vX.Y.Z`
-tag whose root is the installable package snapshot (`package.json`, `dist`,
-`src`, README, LICENSE, CHANGELOG). Consumers install:
-
-```json
-{ "dependencies": { "ripple-zag": "github:ethan-huo/ripple-zag#v0.2.0" } }
-```
-
-Only bump `package.json#version` when a new release tag should be created. See
-[PUBLISHING.md](./PUBLISHING.md).
+GitHub Releases publish `@celados/ripple-zag` to `https://npm.celados.com`.
+Read [PUBLISHING.md](./PUBLISHING.md) before changing the version, release
+workflow, registry authentication, or package artifact.
 
 ## Coding Notes
 

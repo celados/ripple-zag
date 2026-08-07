@@ -2,6 +2,8 @@
 .env*
 .scratch/
 node_modules
+.npmrc
+.npmrc.tpl
 dist
 build
 site-build

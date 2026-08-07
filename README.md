@@ -11,24 +11,24 @@
   </sup>
   <br />
   <br />
-  <pre>bun add github:ethan-huo/ripple-zag#v0.2.0</pre>
+  <pre>bun add @celados/ripple-zag</pre>
   <br />
 </div>
 
 ## Install
 
 ```bash
-bun add github:ethan-huo/ripple-zag#v0.2.0
+bun add @celados/ripple-zag
 ```
 
-Each release tag is a package snapshot whose repository root is installable as
-`ripple-zag`. Use the latest `vX.Y.Z` tag from GitHub when adding the dependency.
+The package is published to `https://npm.celados.com` under the `@celados` scope.
+Configure registry authentication before installing it.
 This package is not published to npm.
 
 ## Usage
 
 ```ts
-import { useMachine, normalizeProps } from "ripple-zag"
+import { useMachine, normalizeProps } from "@celados/ripple-zag"
 ```
 
 `useMachine` binds a `@zag-js/*` machine to Ripple's reactivity;
@@ -36,7 +36,7 @@ import { useMachine, normalizeProps } from "ripple-zag"
 
 ## Peer dependencies
 
-- `ripple >= 0.3.0`
+- `ripple ^0.3.118`
 
 ## Demo
 

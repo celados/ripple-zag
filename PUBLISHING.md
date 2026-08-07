@@ -1,38 +1,32 @@
+---
+type: Playbook
+title: Publish ripple-zag
+description: Release @celados/ripple-zag through GitHub and npm.celados.com.
+when: Changing the package version, artifact, registry authentication, or release workflow.
+---
+
 # Publishing
 
-This package is distributed from GitHub version tags. `main` is the source
-branch and does not track generated `dist/`. Release tags are consumable
-snapshots that include `dist/` built from the source at that version.
+`package.json#version` is the release source of truth. A published GitHub
+Release whose tag is exactly `v${version}` triggers
+[the publish workflow](./.github/workflows/release.yml).
 
-## Version Contract
+## Contract
 
-`package.json#version` is the source of truth for release tags.
+- Package: `@celados/ripple-zag`
+- Registry: `https://npm.celados.com`
+- Local authentication: activate `publish-package-celados`, copy its auth
+  template to `.npmrc.tpl`, then render it; both local files stay ignored
+- CI authentication: the `NPM_TOKEN` Actions secret becomes `NODE_AUTH_TOKEN`
+- Artifact: `dist/`, `src/`, `README.md`, `LICENSE`, and package metadata
 
-When `package.json` changes on `main`, `.github/workflows/release.yml`:
+The workflow performs a frozen install, typecheck, tests, artifact dry-run,
+publish, and an exact-version install/import from a clean consumer.
 
-1. Reads `package.json#version`.
-2. Resolves the release tag as `v${version}`.
-3. Refuses non-semver versions.
-4. Refuses versions not greater than the latest `vX.Y.Z` tag.
-5. Runs tests.
-6. Builds `dist/`.
-7. Creates an annotated tag from a release-only tree.
+## Release
 
-The release tag contains only: `package.json` (without `scripts`/`devDependencies`),
-`README.md`, `LICENSE`, `CHANGELOG.md`, `dist/`, and `src/`. Repository-only
-files (`.github/`, configs, tests) are excluded.
-
-If the tag already exists, the workflow exits without creating a new tag.
-
-## Releasing
-
-1. Update `package.json#version`.
-2. Update `CHANGELOG.md`.
-3. Commit and push to `main`.
-4. Let CI create the matching tag.
-
-Consumers depend on a version tag, not `main`:
-
-```bash
-bun add github:ethan-huo/ripple-zag#v0.2.0
-```
+1. Update `package.json#version` and `CHANGELOG.md`.
+2. Run the local gates and inspect the packed artifact.
+3. Commit and push `main`.
+4. Publish a GitHub Release named after the matching `v${version}` tag.
+5. Wait for the publish workflow and verify the exact registry version.

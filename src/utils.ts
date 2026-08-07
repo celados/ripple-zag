@@ -19,7 +19,7 @@ export function compact(obj: any): any {
   for (const key of keys) {
     // Function props are common Zag callbacks/store methods; only unwrap tracked values here.
     const value = obj[key]
-    const v = isTracked(value) ? access(value) : value
+    const v = isTracked(value) ? value.value : value
     if (v === undefined) continue
     result[key] = compact(v)
   }

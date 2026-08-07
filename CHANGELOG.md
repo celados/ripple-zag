@@ -1,4 +1,12 @@
-# zag-ripple
+# ripple-zag
+
+## 0.3.0
+
+### Minor Changes
+
+- Publish as `@celados/ripple-zag` through `npm.celados.com`.
+- Update Ripple to 0.3.118 and Zag dependencies to 1.43.0.
+- Cover Zag's composed `data-ownedby` merge behavior and fix tracked-value typechecking.
 
 ## 0.1.4
 
