@@ -1,5 +1,13 @@
 # ripple-zag
 
+## 0.4.0
+
+### Breaking Changes
+
+- Remove the `mergeProps` re-export. It had no Ripple-specific behavior and
+  forced the adapter to mirror an upstream utility API that consumers can
+  import directly from `@zag-js/core` when they actually need it.
+
 ## 0.3.0
 
 ### Minor Changes

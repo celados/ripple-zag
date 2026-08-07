@@ -1,6 +1,6 @@
 import { createMachine } from "@zag-js/core"
 import { mount, tick } from "ripple"
-import { normalizeProps, mergeProps } from "../dist/index.mjs"
+import { normalizeProps } from "../dist/index.mjs"
 import Harness from "./DistHarness.tsrx"
 
 async function renderMachine(machine: any, machineProps?: any) {
@@ -86,19 +86,5 @@ describe("dist build", () => {
     expect(props).toHaveProperty("for", "input-1")
     expect(props).not.toHaveProperty("onFocus")
     expect(props).not.toHaveProperty("className")
-  })
-
-  test("mergeProps combines objects", () => {
-    const merged = mergeProps({ a: 1 }, { b: 2 })
-    expect(merged).toMatchObject({ a: 1, b: 2 })
-  })
-
-  test("mergeProps composes data-ownedby tokens", () => {
-    const merged = mergeProps(
-      { "data-ownedby": "dialog-1 shared" },
-      { "data-ownedby": "popover-1 shared" },
-    )
-
-    expect(merged).toHaveProperty("data-ownedby", "dialog-1 shared popover-1")
   })
 })
