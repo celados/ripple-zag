@@ -1,5 +1,12 @@
 # ripple-zag
 
+## 0.4.1
+
+### Patch Changes
+
+- Type normalized generic element props as Ripple intrinsic element attributes
+  instead of `<head>` attributes, fixing invalid `ref` types on connected APIs.
+
 ## 0.4.0
 
 ### Breaking Changes

@@ -1,7 +1,7 @@
 import { createNormalizer } from "@zag-js/types"
 import { isNumber, isObject, isString } from "@zag-js/utils"
 
-type HTMLAttributes = JSX.IntrinsicElements['head'];
+type HTMLAttributes = JSX.IntrinsicElements[string];
 export type PropTypes = JSX.IntrinsicElements & {
   element: HTMLAttributes;
   style: Record<string, any>;
